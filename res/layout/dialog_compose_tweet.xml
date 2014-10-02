@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:background="#00FFFFFF"
+    android:paddingLeft="5dp" 
+    android:paddingTop="15dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="15dp">
+
+		    <ImageView
+		        android:id="@+id/ivComposeUserPorfileImage"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:layout_alignParentLeft="true"
+		        android:layout_alignParentTop="true"
+		        android:src="@drawable/bird_blue_48" />
+		
+		    <TextView
+		        android:id="@+id/tvComposeUserName"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentTop="true"
+		        android:layout_toRightOf="@+id/ivComposeUserPorfileImage"
+				android:layout_marginLeft="5dp"
+		        android:text="TextView" />
+		
+		    <TextView
+		        android:id="@+id/tvComposeScreenName"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/tvComposeUserName"
+		        android:layout_below="@+id/tvComposeUserName"
+		        android:textSize="10dp"
+		        
+		        android:text="TextView" />
+
+		    <EditText
+		        android:id="@+id/etNewTweetBody"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignLeft="@+id/ivComposeUserPorfileImage"
+		        android:layout_below="@+id/ivComposeUserPorfileImage"
+		        android:layout_marginTop="45dp"
+		        android:layout_toLeftOf="@+id/ivTweetButton"
+		        android:ems="10"
+		        android:hint="What&apos;s happening?" />
+
+		    <ImageView
+		        android:id="@+id/ivTweetButton"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:layout_alignBottom="@+id/etNewTweetBody"
+		        android:layout_alignParentRight="true"
+		        android:src="@drawable/compose" />
+
+		    <TextView
+		        android:id="@+id/tvCharRemaining"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:layout_alignParentTop="true"
+		        android:textSize="10dp"
+		        android:text="@string/default_chars_remaining" />
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/miCompose"
+        android:visible="true"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_twitter_compose_1"
+        android:title="@string/action_settings"/>
+
+</menu>

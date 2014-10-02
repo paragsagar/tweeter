@@ -1,0 +1,115 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ivDetailReply"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/ivDetailProfilePhoto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/th" />
+
+    <TextView
+        android:id="@+id/tvDetailUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivDetailProfilePhoto"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@+id/ivDetailProfilePhoto"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tcDetailTweetBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivDetailProfilePhoto"
+        android:layout_alignParentRight="true"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:layout_below="@+id/ivDetailProfilePhoto"
+        android:layout_marginTop="18dp"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/ivDetailMediaPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tcDetailTweetBody"
+        android:layout_below="@+id/tcDetailTweetBody" />
+
+    <VideoView
+        android:id="@+id/vvDetailMediaVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ivDetailMediaPhoto"
+        android:layout_alignLeft="@+id/ivDetailMediaPhoto"
+        android:layout_below="@+id/ivDetailMediaPhoto"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/ivDetailReplyTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivDetailProfilePhoto"
+        android:layout_below="@+id/ivDetailMediaPhoto"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/reply" 
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/tvDetailUserScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDetailUserName"
+        android:layout_below="@+id/tvDetailUserName"
+        android:text="TextView"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/etReplyTweetBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/ivComposeReplyBtn"
+        android:ems="10"
+        android:hint="@string/reply_tweet_hint" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:id="@+id/ivComposeReplyBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/compose" />
+
+    <TextView
+        android:id="@+id/tvDetailLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivDetailMediaPhoto"
+        android:layout_alignTop="@+id/ivDetailReplyTweet"
+        android:drawableLeft="@drawable/favorite"
+        android:text="TextView"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tvDetailRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivDetailReplyTweet"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/retweet"
+        android:textSize="10dp"
+        android:text="TextView" />
+
+</RelativeLayout>
