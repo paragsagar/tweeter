@@ -35,7 +35,7 @@ Completed user stories:
 
 Walkthrough of all user stories:
 
-![Video Walkthrough](tweeter_ParagSagar.gif)
+![Video Walkthrough](Tweeter_ParagSagar.gif)
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
