@@ -2,14 +2,19 @@ package com.sagar.tweeter.adapter;
 
 import java.util.List;
 
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnHoverListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -17,10 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.sagar.tweeter.R;
 import com.sagar.tweeter.activity.ComposeTweetDialog;
 import com.sagar.tweeter.activity.TweetDetailActivity;
+import com.sagar.tweeter.activity.UserProfileActivity;
+import com.sagar.tweeter.client.TwitterApplication;
+import com.sagar.tweeter.client.TwitterClient;
 import com.sagar.tweeter.models.Tweet;
 import com.sagar.tweeter.models.User;
 
@@ -83,21 +92,8 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 			//load Video
 		}
 		
-		viewHolder.tvReplyTweet.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getContext(), "reply tweet to .. "+ viewHolder.tvUserScreenName.getText(), Toast.LENGTH_SHORT).show();
-				
-				FragmentManager fm =  ((FragmentActivity)getContext()).getSupportFragmentManager();
-				User signedInUser = getSignedInUser();
-				
-			      ComposeTweetDialog composeTweetDialog = ComposeTweetDialog.newInstance(signedInUser, tweet, tweet.getUid());
-			      composeTweetDialog.show(fm, "dialog_compose_tweet");
-				
-			}
-
-		});
+		setupWidgetListeners(tweet);
+		
 		view.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -114,6 +110,90 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		
 		return view;
 	}
+
+
+	/**
+	 * @param tweet
+	 */
+	private void setupWidgetListeners(final Tweet tweet) {
+		final TwitterClient client = TwitterApplication.getRestClient();
+		
+		viewHolder.tvRetweet.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getContext(), "Retweeted !! ", Toast.LENGTH_SHORT).show();
+				
+				client.postStatusRetweet(Long.toString(tweet.getUid()),new JsonHttpResponseHandler(){
+					@Override
+					public void onSuccess(JSONObject json) {
+						// TODO Auto-generated method stub
+						Tweet newTweet = Tweet.fromJson(json);
+						viewHolder.tvRetweet.setText(" "+newTweet.getRetweetCount());
+						
+					}
+					@Override
+					public void onFailure(Throwable arg0, String arg1) {
+						// TODO Auto-generated method stub
+						super.onFailure(arg0, arg1);
+					}
+				});
+				
+			}
+
+		});
+		
+		viewHolder.tvLikeCount.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getContext(), "Liked ..!! ", Toast.LENGTH_SHORT).show();
+				
+				client.postStatusRetweet(Long.toString(tweet.getUid()),new JsonHttpResponseHandler(){
+					@Override
+					public void onSuccess(JSONObject json) {
+						// TODO Auto-generated method stub
+						Tweet newTweet = Tweet.fromJson(json);
+						viewHolder.tvRetweet.setText(" "+newTweet.getRetweetCount());
+						
+					}
+				});
+				
+			}
+
+		});
+		
+		viewHolder.ivProfileImage.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getContext(), "Liked ..!! ", Toast.LENGTH_SHORT).show();
+				
+				tweet.getUser().getScreenName();
+				Intent i = new Intent(getContext(),UserProfileActivity.class);
+				i.putExtra("screen_name", tweet.getUser().getScreenName());
+				getContext().startActivity(i);
+			}
+
+		});		
+		
+		viewHolder.tvReplyTweet.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+//				Toast.makeText(getContext(), "reply tweet to .. "+ viewHolder.tvUserScreenName.getText(), Toast.LENGTH_SHORT).show();
+				
+				FragmentManager fm =  ((FragmentActivity)getContext()).getSupportFragmentManager();
+				User signedInUser = getSignedInUser();
+				
+			      ComposeTweetDialog composeTweetDialog = ComposeTweetDialog.newInstance(signedInUser, tweet, tweet.getUid());
+			      composeTweetDialog.show(fm, "dialog_compose_tweet");
+				
+			}
+
+		});
+		
+	}
 	
 
 	/**
@@ -128,7 +208,8 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 		return signedInUser;
 	}	
 	
-	
+
+	//View holder pattern for fast accessing (Caching) of the widgets
 	public class ViewHolder{
 		
 		public TextView tvUserScreenName;

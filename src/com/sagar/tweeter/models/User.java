@@ -24,6 +24,12 @@ public class User implements Serializable {
 	@Column(name="profile_image_url")
 	private String profileImageUrl;
 
+	private String tagLine;//description
+	private String nosTweets;//statuses_count
+	private String nosFollowers;//followers_count
+	private String nosFollowing; //favourites_count
+	private String profileBackgroundImageUrl;
+	
 	/**
 	 * It construct a User object out of a JSON object.
 	 * 
@@ -37,8 +43,13 @@ public class User implements Serializable {
 			user.setProfileImageUrl(json.getString("profile_image_url"));
 			user.setScreenName(json.getString("screen_name"));
 			user.setUid(json.getLong("id"));
+			user.setTagLine(json.getString("description"));
+			user.setNosTweets(json.getString("statuses_count"));
+			user.setNosFollowers(json.getString("followers_count"));
+			user.setNosFollowing(json.getString("favourites_count"));
+			user.setProfileBackgroundImageUrl(json.getString("profile_background_image_url"));
+			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return user;
@@ -77,6 +88,46 @@ public class User implements Serializable {
 
 	public void setProfileImageUrl(String profileImageUrl) {
 		this.profileImageUrl = profileImageUrl;
+	}
+
+	public String getNosTweets() {
+		return nosTweets;
+	}
+
+	public void setNosTweets(String nosTweets) {
+		this.nosTweets = nosTweets;
+	}
+
+	public String getNosFollowers() {
+		return nosFollowers;
+	}
+
+	public void setNosFollowers(String nosFollowers) {
+		this.nosFollowers = nosFollowers;
+	}
+
+	public String getNosFollowing() {
+		return nosFollowing;
+	}
+
+	public void setNosFollowing(String nosFollowing) {
+		this.nosFollowing = nosFollowing;
+	}
+
+	public String getTagLine() {
+		return tagLine;
+	}
+
+	public void setTagLine(String tagLine) {
+		this.tagLine = tagLine;
+	}
+
+	public String getProfileBackgroundImageUrl() {
+		return profileBackgroundImageUrl;
+	}
+
+	public void setProfileBackgroundImageUrl(String profileBackgroundImageUrl) {
+		this.profileBackgroundImageUrl = profileBackgroundImageUrl;
 	}
 
 }

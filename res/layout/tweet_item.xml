@@ -20,7 +20,7 @@
         android:layout_toRightOf="@+id/ivProfileImage"
         android:textStyle="bold"
         android:text="@string/name_label"
-        android:padding="3dp" />
+        android:padding="5dp" />
     
 
     <TextView
@@ -40,9 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:drawableLeft="@drawable/time"
         android:textSize="10dp"
-        android:text="2h ago " />
+        android:text="2h" />
 
     <TextView
         android:id="@+id/tvReplyTweet"

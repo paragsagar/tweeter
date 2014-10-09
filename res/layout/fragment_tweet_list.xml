@@ -4,14 +4,16 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <FrameLayout
-        android:id="@+id/flContainer"
-        android:layout_width="wrap_content"
+    <eu.erikw.PullToRefreshListView
+        android:id="@+id/lvTweets"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-    </FrameLayout>
+        android:layout_alignParentTop="true" 
+        tools:listitem="@layout/tweet_item">
+
+    </eu.erikw.PullToRefreshListView>
 
 </RelativeLayout>

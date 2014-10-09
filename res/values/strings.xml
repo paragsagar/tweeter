@@ -15,5 +15,6 @@
     <string name="compose_tweet_label">Tweet</string>
     <string name="default_chars_remaining">140 chars left</string>
     <string name="reply_tweet_hint">Reply to the tweet...</string>
+    <string name="title_activity_user_profile">User Profile</string>
 
 </resources>
