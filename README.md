@@ -1,3 +1,26 @@
+Tweeter part 2 - an advanced twitter client with Fragments
+===========================================================
+
+* [x] Required: Includes all required user stories from Week 3 Twitter Client
+* [x] Required: User can switch between Timeline and Mention views using tabs.
+* [x] Required: User can view their home timeline tweets.
+* [x] Required: User can view the recent mentions of their username.
+* [x] Required: User can scroll to bottom of either of these lists and new tweets will load ("infinite scroll")
+* [x] Required: User can navigate to view their own profile
+* [x] Required: User can see picture, tagline, # of followers, # of following, and tweets on their profile.
+* [x] Required: User can click on the profile image in any tweet to see another user's profile.
+* [x] Required: User can see picture, tagline, # of followers, # of following, and tweets of clicked user.
+* [x] Required: Profile view should include that user's timeline
+
+* [x] Advanced: Robust error handling, check if internet is available, handle error cases, network failures
+* [x] Advanced: When a network request is sent, user sees an indeterminate progress indicator
+* [x] Advanced: User can "reply" to any tweet on their home timeline
+         The user that wrote the original tweet is automatically "@" replied in compose
+* [x] Advanced: User can click on a tweet to be taken to a "detail view" of that tweet
+* [x] Advanced: Improve the user interface and theme the app to feel twitter branded
+
+![Video Walkthrough](Tweeter_Fragments_ParagSagar.gif)
+
 Tweeter - a simple twitter client
 ==================================
 
